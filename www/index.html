@@ -4,8 +4,64 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>Blank App</title>
+         <script type="text/javascript" charset="utf-8" src="cordova-1.5.0.js"></script>     
+        <script type="text/javascript">
+     function onLoad()
+             {
+                  var name1="abc";
+                  var pwd1="xyz";
+                  var n=localStorage.getItem("name");
+                  var p=localStorage.getItem("pwd");
+                   if(name1==n && pwd1==p)
+                  {
+                   window.location = 'home.html';
+                     
+                  }
+                 
+                  document.addEventListener("deviceready", onDeviceReady, true);
+                  
+                 
+             }
+        function myFunction() {
+        	var name1="abc";
+                  var pwd1="xyz";
+        	if (typeof(Storage) !== "undefined") 
+          {
+    
+    var name2=document.getElementById("uname").value;
+    var pwd2=document.getElementById("pwd").value;
+
+if(name1==name2 && pwd1==pwd2 )
+{ 
+  localStorage.setItem("name", name2); 
+    localStorage.setItem("pwd", pwd2);
+    window.location = 'home.html';
+}
+else if(name1!=name2)
+{
+	alert("Wrong Name")
+}
+else if(pwd1!=pwd2)
+{
+	alert("Wrong Password");
+}}
+else {
+    alert("Sorry, your browser does not support Web Storage...");
+}
+}
+	
+
+        </script>
     </head>
-    <body>
+    <body onload="onLoad();">
+    	<h2>Login Page</h2>
         <script type="text/javascript" src="cordova.js"></script>
+        <div>
+        	<div>Username<input type="text" id="uname"></div>
+        	<div></div>
+        	<div>Password<input type="password" id="pwd"></div>
+        	<div><input type="submit" name="btn" value="login" onclick="myFunction()"></div>
+        </div>
+ <script type="text/javascript" src="jquery-1.11.3.min.js"></script>
     </body>
 </html>
